@@ -1,22 +1,17 @@
 //
-//  ContentView.swift
+//  BookSearchView.swift
 //  BookRadar
 //
-//  Created by Agata Przykaza on 30/05/2025.
+//  Created by Agata Przykaza on 02/06/2025.
 //
 
 import SwiftUI
-import BookAPiKit
-import UIKit
 
 
-
-
-
-struct ContentView: View {
+struct BookSearchView: View {
     
     @State private var viewModel = BookSearchViewModel()
-    @State private var selectedBook: Book?
+ 
 
     
     var body: some View {
@@ -52,11 +47,14 @@ struct ContentView: View {
                 
             }
             else{
-                BookCollectionView(books: viewModel.books){ book in
-                    
-                    selectedBook = book
-                   
-                    
+                List(viewModel.books, id: \.id) { book in
+                    VStack(alignment: .leading) {
+                        Text(book.title)
+                            .font(.headline)
+                        Text(book.authors.joined(separator: ", "))
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 
                 
@@ -65,12 +63,9 @@ struct ContentView: View {
         }
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
-        .sheet(item: $selectedBook) { book in
-            BookDetailsSheet(book: book)
-        }
     }
 }
 
 #Preview {
-    ContentView()
+    BookSearchView()
 }
