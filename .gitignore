@@ -1,0 +1,13 @@
+# Podstawowe dla Xcode
+xcuserdata/
+build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+
+# System
+.DS_Store
+
+# Swift Package Manager
+.build/
+.swiftpm/
