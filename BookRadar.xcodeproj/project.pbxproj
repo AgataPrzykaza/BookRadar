@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FDFC54422DE9BFBC00F9A84C /* BookAPiKit in Frameworks */ = {isa = PBXBuildFile; productRef = FDFC54412DE9BFBC00F9A84C /* BookAPiKit */; };
 		FDFC546A2DE9D8F600F9A84C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FDFC54692DE9D8EF00F9A84C /* .gitignore */; };
+		FDFC54A52DEDEDE800F9A84C /* BookRadar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDFC54A32DEDEDE800F9A84C /* BookRadar.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		FDFC54232DE9BF8800F9A84C /* BookRadarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookRadarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDFC542D2DE9BF8800F9A84C /* BookRadarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookRadarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDFC54692DE9D8EF00F9A84C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FDFC54A42DEDEDE800F9A84C /* BookRadar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookRadar.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -82,10 +84,12 @@
 		FDFC540D2DE9BF8600F9A84C = {
 			isa = PBXGroup;
 			children = (
+				FDFC54A32DEDEDE800F9A84C /* BookRadar.xcdatamodeld */,
 				FDFC54692DE9D8EF00F9A84C /* .gitignore */,
 				FDFC54182DE9BF8600F9A84C /* BookRadar */,
 				FDFC54262DE9BF8800F9A84C /* BookRadarTests */,
 				FDFC54302DE9BF8800F9A84C /* BookRadarUITests */,
+				FDFC54A02DEDED9900F9A84C /* Frameworks */,
 				FDFC54172DE9BF8600F9A84C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +102,13 @@
 				FDFC542D2DE9BF8800F9A84C /* BookRadarUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FDFC54A02DEDED9900F9A84C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDFC54A52DEDEDE800F9A84C /* BookRadar.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +597,19 @@
 			productName = BookAPiKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		FDFC54A32DEDEDE800F9A84C /* BookRadar.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FDFC54A42DEDEDE800F9A84C /* BookRadar.xcdatamodel */,
+			);
+			currentVersion = FDFC54A42DEDEDE800F9A84C /* BookRadar.xcdatamodel */;
+			path = BookRadar.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FDFC540E2DE9BF8600F9A84C /* Project object */;
 }

@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct BookRadarApp: App {
+    
+    let coreDataStack = CoreDataStack.shared
+    
+//    init(){
+//        print(NSPersistentContainer.defaultDirectoryURL())
+//    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SimpleRepositoryTest()
+                .environment(\.managedObjectContext, coreDataStack.mainContext)
         }
     }
 }

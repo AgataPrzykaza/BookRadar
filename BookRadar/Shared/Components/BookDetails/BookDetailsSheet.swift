@@ -17,26 +17,26 @@ struct BookDetailsSheet: View {
             ScrollView {
                 VStack(spacing: 20) {
                     
-                    // Obrazek książki
+                   
                     BookImageView(book: book)
                         .frame(height: 300)
                     
                     VStack(alignment: .leading, spacing: 12) {
                         
-                        // Tytuł
+                      
                         Text(book.title)
                             .font(.title)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
                         
-                        // Autorzy
+                       
                         Text("Autorzy:")
                             .font(.headline)
                         Text(book.authors.joined(separator: ", "))
                             .font(.body)
                             .foregroundColor(.secondary)
                         
-                        // Data publikacji
+                     
                         if let publishedDate = book.publishedDate {
                             Text("Data publikacji:")
                                 .font(.headline)
@@ -45,7 +45,8 @@ struct BookDetailsSheet: View {
                                 .foregroundColor(.secondary)
                         }
                         
-                        // Opis
+                       
+                       
                         if let description = book.description, !description.isEmpty {
                             Text("Opis:")
                                 .font(.headline)

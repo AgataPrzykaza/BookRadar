@@ -1,9 +1,13 @@
-# Podstawowe dla Xcode
+# Xcode
 xcuserdata/
 build/
 DerivedData/
-*.ipa
-*.dSYM.zip
+*.xcuserstate
+
+# Core Data (WAŻNE!)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
 
 # System
 .DS_Store
@@ -11,3 +15,10 @@ DerivedData/
 # Swift Package Manager
 .build/
 .swiftpm/
+Package.resolved
+
+# Security (KRYTYCZNE!)
+**/secrets*
+**/*key*
+**/*token*
+*.plist

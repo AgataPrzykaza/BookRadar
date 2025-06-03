@@ -11,7 +11,60 @@ import UIKit
 
 
 
-
+struct SimpleRepositoryTest: View {
+    @State private var repository = BookRepository()
+    @State private var testResult = "Nie testowano jeszcze"
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Repository Test")
+                .font(.title)
+            
+            Text(testResult)
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
+            
+            Button("Test Repository") {
+                Task {
+                    await testRepository()
+                }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+    
+    private func testRepository() async {
+        do {
+            // Stwórz fake API book
+            let fakeAPIBook = Book(
+                id: "test-api-book",
+                title: "Swift Programming Guide",
+                authors: ["Apple Inc."],
+                publishedDate: "2024",
+                description: "Great book about Swift",
+                thumbnailURL: nil
+            )
+            
+            // Test repository method
+            let userEntry = try await repository.addBookToLibrary(fakeAPIBook, status: .wantToRead)
+            
+            // Pobierz z bazy
+            let allBooks = try await repository.fetchMyBooks()
+            
+            testResult = """
+            ✅ SUCCESS!
+            Dodano książkę: \(userEntry.book?.title ?? "brak")
+            Status: \(userEntry.status)
+            Wszystkich książek w bibliotece: \(allBooks.count)
+            """
+            
+        } catch {
+            testResult = "❌ ERROR: \(error.localizedDescription)"
+        }
+    }
+}
 
 struct ContentView: View {
     
