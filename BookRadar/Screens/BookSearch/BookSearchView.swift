@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import BookAPiKit
 
 
 struct BookSearchView: View {
     
     @State private var viewModel = BookSearchViewModel()
- 
+    @State private var selectedBook: Book?
 
     
     var body: some View {
@@ -47,14 +48,11 @@ struct BookSearchView: View {
                 
             }
             else{
-                List(viewModel.books, id: \.id) { book in
-                    VStack(alignment: .leading) {
-                        Text(book.title)
-                            .font(.headline)
-                        Text(book.authors.joined(separator: ", "))
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
+                BookCollectionView(books: viewModel.books){ book in
+                    
+                    selectedBook = book
+                    
+                    
                 }
                 
                 
@@ -63,6 +61,9 @@ struct BookSearchView: View {
         }
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity,alignment: .topLeading)
+        .sheet(item: $selectedBook) { book in
+            BookDetailsSheet(book: book)
+        }
     }
 }
 

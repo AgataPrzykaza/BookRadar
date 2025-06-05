@@ -25,9 +25,9 @@ struct SimpleRepositoryTest: View {
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(8)
             
-            Button("Test Repository") {
+            Button("Pobierz książki z bazy") {
                 Task {
-                    await testRepository()
+                    await fetchBooks()
                 }
             }
             .buttonStyle(.borderedProminent)
@@ -35,30 +35,35 @@ struct SimpleRepositoryTest: View {
         .padding()
     }
     
-    private func testRepository() async {
+    private func fetchBooks() async {
         do {
-            // Stwórz fake API book
-            let fakeAPIBook = Book(
-                id: "test-api-book",
-                title: "Swift Programming Guide",
-                authors: ["Apple Inc."],
-                publishedDate: "2024",
-                description: "Great book about Swift",
-                thumbnailURL: nil
-            )
-            
-            // Test repository method
-            let userEntry = try await repository.addBookToLibrary(fakeAPIBook, status: .wantToRead)
-            
-            // Pobierz z bazy
+            // Pobierz wszystkie książki z bazy
             let allBooks = try await repository.fetchMyBooks()
             
-            testResult = """
-            ✅ SUCCESS!
-            Dodano książkę: \(userEntry.book?.title ?? "brak")
-            Status: \(userEntry.status)
-            Wszystkich książek w bibliotece: \(allBooks.count)
-            """
+            if allBooks.isEmpty {
+                testResult = """
+                📚 BAZA PUSTA
+                Brak książek w bibliotece.
+                Dodaj jakieś książki przez wyszukiwanie!
+                """
+            } else {
+                // Pokaż szczegóły każdej książki
+                var result = "📚 KSIĄŻKI W BAZIE (\(allBooks.count)):\n\n"
+                
+                for (index, book) in allBooks.enumerated() {
+                    result += """
+                    \(index + 1). \(book.book?.title ?? "Brak tytułu")
+                       Autor: \(book.book?.authors ?? "Nieznany")
+                       Status: \(book.status)
+                       Rating: \(book.rating)/5
+                       Ulubiona: \(book.isFavorite ? "❤️" : "🤍")
+                       Dodana: \(book.dateAdded.formatted(date: .abbreviated, time: .omitted))
+                    
+                    """
+                }
+                
+                testResult = result
+            }
             
         } catch {
             testResult = "❌ ERROR: \(error.localizedDescription)"

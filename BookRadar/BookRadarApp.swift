@@ -8,19 +8,24 @@
 import SwiftUI
 import CoreData
 
+extension EnvironmentValues {
+    @Entry var bookRepository: BookRepositoryProtocol = BookRepository()
+}
+
 @main
 struct BookRadarApp: App {
     
     let coreDataStack = CoreDataStack.shared
-    
-//    init(){
-//        print(NSPersistentContainer.defaultDirectoryURL())
-//    }
+    let bookRepository = BookRepository()
+    init(){
+        print(NSPersistentContainer.defaultDirectoryURL())
+    }
     
     var body: some Scene {
         WindowGroup {
-            SimpleRepositoryTest()
+            TabsView()
                 .environment(\.managedObjectContext, coreDataStack.mainContext)
+                .environment(\.bookRepository, bookRepository)
         }
     }
 }
