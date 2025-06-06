@@ -25,7 +25,7 @@ protocol BookRepositoryProtocol {
     func fetchMyBooks() async throws -> [UserBookEntry]
     func fetchBooks(with status: ReadingStatus) async throws -> [UserBookEntry]
     func fetchFavoriteBooks() async throws -> [UserBookEntry]
-    func isBookInLibrary(_ id: String) async throws -> Bool
+    func isBookInLibrary(_ id: String) async throws -> UserBookEntry?
     
     func markDayAsRead(for userEntry: UserBookEntry, date: Date) async throws
     func unmarkDay(for userEntry: UserBookEntry, date: Date) async throws
@@ -38,14 +38,14 @@ enum ReadingStatus: String, CaseIterable {
     case wantToRead = "want_to_read"
     case currentlyReading = "currently_reading"
     case finished = "finished"
-    case onHold = "on_hold"
+    case pause = "pause"
     
     var displayName: String {
         switch self {
         case .wantToRead: return "Want to Read"
         case .currentlyReading: return "Currently Reading"
         case .finished: return "Finished"
-        case .onHold: return "On Hold"
+        case .pause: return "Pause"
         }
     }
 }

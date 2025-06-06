@@ -76,9 +76,7 @@ class BookRepository: BookRepositoryProtocol{
         
         
         let currentStatus = ReadingStatus(rawValue: userEntry.status) ?? .wantToRead
-        guard currentStatus != status else {
-            return
-        }
+        
         
         userEntry.status = status.rawValue
         
@@ -94,7 +92,7 @@ class BookRepository: BookRepositoryProtocol{
                 userEntry.dateFinished = Date()
             }
             
-        case .wantToRead, .onHold:
+        case .wantToRead, .pause:
             
             userEntry.dateFinished = nil
             
@@ -145,13 +143,13 @@ class BookRepository: BookRepositoryProtocol{
         return try context.fetch(request)
     }
     
-    func isBookInLibrary(_ id: String) async throws -> Bool {
+    func isBookInLibrary(_ id: String) async throws -> UserBookEntry? {
         let request: NSFetchRequest<UserBookEntry> = UserBookEntry.fetchRequest()
         
         request.predicate = NSPredicate(format: "book.id == %@", id)
         request.fetchLimit = 1
         
-        return try context.fetch(request).count > 0
+        return try context.fetch(request).first
     }
     
     func markDayAsRead(for userEntry: UserBookEntry, date: Date) async throws {
