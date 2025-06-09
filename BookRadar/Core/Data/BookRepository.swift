@@ -75,7 +75,7 @@ class BookRepository: BookRepositoryProtocol{
     func updateBookStatus(_ userEntry: UserBookEntry, status: ReadingStatus) async throws {
         
         
-        let currentStatus = ReadingStatus(rawValue: userEntry.status) ?? .wantToRead
+        //let currentStatus = ReadingStatus(rawValue: userEntry.status) ?? .wantToRead
         
         
         userEntry.status = status.rawValue
