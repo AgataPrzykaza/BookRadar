@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension ReadingDay {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ReadingDay> {
@@ -23,6 +22,6 @@ extension ReadingDay {
 
 }
 
-extension ReadingDay : Identifiable {
+extension ReadingDay: Identifiable {
 
 }

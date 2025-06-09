@@ -8,7 +8,6 @@
 import SwiftUI
 import BookAPiKit
 
-
 @MainActor
 @Observable
 class BookDetailsViewModel {
@@ -33,17 +32,13 @@ class BookDetailsViewModel {
         self.bookRepository = bookRepository
     }
     
-    
     func updateStatus(_ newStatus: ReadingStatus) async {
         guard userBookEntry != nil else { return }
-        
         
         userBookEntry?.status = newStatus.rawValue
         currentStatus = newStatus
         
-        
         do {
-            
             
             try await bookRepository.updateBookStatus(userBookEntry!, status: newStatus)
             
@@ -69,20 +64,15 @@ class BookDetailsViewModel {
         isLoading = false
     }
     
-    
-    func checkIfAlreadyInLibrary(book: Book) async  {
+    func checkIfAlreadyInLibrary(book: Book) async {
         
-        
-        do{
+        do {
             userBookEntry = try await bookRepository.isBookInLibrary(book.id)
             currentStatus = ReadingStatus(rawValue: userBookEntry?.status ?? "") ?? .wantToRead
             
-            
-        }
-        catch{
+        } catch {
             message = " Błąd: \(error.localizedDescription)"
         }
-        
         
     }
     

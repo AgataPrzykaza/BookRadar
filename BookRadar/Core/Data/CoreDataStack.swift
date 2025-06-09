@@ -8,11 +8,11 @@
 import CoreData
 import Foundation
 
-final class CoreDataStack{
+final class CoreDataStack {
     
     static let shared = CoreDataStack()
     
-    private init(){}
+    private init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "BookRadar")
@@ -26,11 +26,9 @@ final class CoreDataStack{
 #if DEBUG
                 fatalError("Core Data failed to load: \(error)")
                 
-                
 #endif
             }
         }
-        
         
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
@@ -38,12 +36,9 @@ final class CoreDataStack{
         return container
     }()
     
-    
     var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    
-    
     
     @MainActor
     func saveAsync() async throws {

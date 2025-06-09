@@ -10,7 +10,7 @@ import BookAPiKit
 
 protocol BookRepositoryProtocol {
     
-    func addBookToLibrary(_ book: Book,status: ReadingStatus) async throws -> UserBookEntry
+    func addBookToLibrary(_ book: Book, status: ReadingStatus) async throws -> UserBookEntry
     
     func removeBookFromLibrary(_ userEntry: UserBookEntry) async throws
     
@@ -19,8 +19,6 @@ protocol BookRepositoryProtocol {
     func updateBookRating(_ userEntry: UserBookEntry, rating: Int16) async throws
     
     func toggleBookFavorite(_ userEntry: UserBookEntry) async throws
-    
-    
     
     func fetchMyBooks() async throws -> [UserBookEntry]
     func fetchBooks(with status: ReadingStatus) async throws -> [UserBookEntry]

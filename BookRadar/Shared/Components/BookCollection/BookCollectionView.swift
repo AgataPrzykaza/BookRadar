@@ -13,7 +13,7 @@ struct BookCollectionView: UIViewControllerRepresentable {
     let books: [Book]
     let onBookTapped: (Book) -> Void
     
-    func makeUIViewController(context: Context) ->  BookCollectionViewController {
+    func makeUIViewController(context: Context) -> BookCollectionViewController {
         let controller = BookCollectionViewController()
         controller.onBookTapped = onBookTapped
         return controller

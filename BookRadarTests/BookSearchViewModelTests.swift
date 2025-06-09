@@ -32,11 +32,11 @@ class MockBookAPIService: BookAPIServiceProtocol {
 @MainActor
 struct BookSearchViewModelTests {
     
-    func createViewModel() -> (BookSearchViewModel,MockBookAPIService){
+    func createViewModel() -> (BookSearchViewModel, MockBookAPIService) {
         
         let mockAPI = MockBookAPIService()
         let viewModel = BookSearchViewModel(bookAPIService: mockAPI)
-        return (viewModel,mockAPI)
+        return (viewModel, mockAPI)
     }
 
     @Test("validateInput returns false for empty text")

@@ -25,8 +25,6 @@ struct BookImageView: View {
             .frame(maxHeight: .infinity)
             .background(Color.gray.opacity(0.1))
             .cornerRadius(8)
-            
-           
        
     }
 }

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct MyBooksView: View {
     
     @Environment(\.bookRepository) private var repository
@@ -17,10 +15,10 @@ struct MyBooksView: View {
     var body: some View {
         
         NavigationStack {
-            Group{
+            Group {
                 if let viewModel = viewModel {
                     MyBooksContentView(viewModel: viewModel)
-                } else{
+                } else {
                     ProgressView("Wczytywanie książek...")
                 }
             }
@@ -32,7 +30,6 @@ struct MyBooksView: View {
             }
         }    }
 }
-
 
 #Preview {
     MyBooksView()

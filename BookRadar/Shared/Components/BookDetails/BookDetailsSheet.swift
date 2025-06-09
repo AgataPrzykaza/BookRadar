@@ -8,7 +8,6 @@
 import SwiftUI
 import BookAPiKit
 
-
 struct BookDetailsSheet: View {
    
     @Environment(\.bookRepository) private var repository
@@ -16,12 +15,12 @@ struct BookDetailsSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var viewModel: BookDetailsViewModel?
     
-    var body: some View{
+    var body: some View {
         NavigationStack {
-            Group{
+            Group {
                 if let viewModel = viewModel {
                     BookDetailsSheetContentView(book: book, viewModel: viewModel)
-                } else{
+                } else {
                     ProgressView("Wczytywanie książek...")
                 }
             }
@@ -34,4 +33,3 @@ struct BookDetailsSheet: View {
         }    }
     
 }
-

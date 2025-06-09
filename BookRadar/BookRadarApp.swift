@@ -17,7 +17,7 @@ struct BookRadarApp: App {
     
     let coreDataStack = CoreDataStack.shared
     let bookRepository = BookRepository()
-    init(){
+    init() {
         print(NSPersistentContainer.defaultDirectoryURL())
     }
     

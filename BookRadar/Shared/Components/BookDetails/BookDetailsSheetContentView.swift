@@ -8,15 +8,13 @@
 import SwiftUI
 import BookAPiKit
 
-
 struct BookDetailsSheetContentView: View {
     let book: Book
     @Environment(\.dismiss) private var dismiss
     @Bindable var viewModel: BookDetailsViewModel
     
-    
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack(spacing: 20) {
                 bookImageSection
                 statusSection
@@ -32,11 +30,10 @@ struct BookDetailsSheetContentView: View {
             }
         }
     }
-    
 
 }
 
-private extension BookDetailsSheetContentView{
+private extension BookDetailsSheetContentView {
     
     var bookImageSection: some View {
         BookImageView(book: book)

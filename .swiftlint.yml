@@ -1,0 +1,20 @@
+
+# .swiftlint.yml - Minimalna konfiguracja
+# Jeśli masz problemy z SourceKit
+
+excluded:
+  - Carthage
+  - Pods
+  - .build
+  - DerivedData
+
+line_length: 120
+
+disabled_rules:
+  - todo
+  - trailing_whitespace
+
+# Tylko podstawowe, bezpieczne reguły
+opt_in_rules:
+  - empty_count
+  - first_where

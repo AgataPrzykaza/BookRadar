@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class SwiftUIUserBookCell: UICollectionViewCell{
+class SwiftUIUserBookCell: UICollectionViewCell {
     
     private var hostingController: UIHostingController<UserBookImageView>?
     
@@ -29,11 +29,9 @@ class SwiftUIUserBookCell: UICollectionViewCell{
       
         hostingController?.view.removeFromSuperview()
         hostingController?.removeFromParent()
-        
       
         let swiftUIView = UserBookImageView(userBook: book)
         let hostingController = UIHostingController(rootView: swiftUIView)
-        
        
         hostingController.view.backgroundColor = .clear
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false

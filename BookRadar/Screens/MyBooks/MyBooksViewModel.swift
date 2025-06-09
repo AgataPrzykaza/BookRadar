@@ -8,7 +8,7 @@ import Foundation
 
 @MainActor
 @Observable
-class MyBooksViewModel{
+class MyBooksViewModel {
     
     private var bookRepository: BookRepositoryProtocol
     
@@ -20,7 +20,7 @@ class MyBooksViewModel{
         self.bookRepository = bookRepository
     }
     
-    func loadBooks() async{
+    func loadBooks() async {
         isLoading = true
         errorMessage = nil
         
@@ -33,4 +33,3 @@ class MyBooksViewModel{
         isLoading = false
     }
 }
-

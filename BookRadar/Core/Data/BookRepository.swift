@@ -9,7 +9,7 @@ import Foundation
 import BookAPiKit
 import CoreData
 
-class BookRepository: BookRepositoryProtocol{
+class BookRepository: BookRepositoryProtocol {
     
     private let context = CoreDataStack.shared.mainContext
     
@@ -32,7 +32,6 @@ class BookRepository: BookRepositoryProtocol{
         userEntry.rating = 0
         userEntry.isFavorite = false
         
-        
         try await CoreDataStack.shared.saveAsync()
         
         return userEntry
@@ -49,7 +48,6 @@ class BookRepository: BookRepositoryProtocol{
     
     private func createBookItem(from book: Book) -> BookItem {
         let bookItem = BookItem(context: context)
-        
         
         bookItem.id = book.id
         bookItem.title = book.title
@@ -74,9 +72,7 @@ class BookRepository: BookRepositoryProtocol{
     
     func updateBookStatus(_ userEntry: UserBookEntry, status: ReadingStatus) async throws {
         
-        
-        //let currentStatus = ReadingStatus(rawValue: userEntry.status) ?? .wantToRead
-        
+        // let currentStatus = ReadingStatus(rawValue: userEntry.status) ?? .wantToRead
         
         userEntry.status = status.rawValue
         
@@ -98,10 +94,7 @@ class BookRepository: BookRepositoryProtocol{
             
         }
         
-        
         try await CoreDataStack.shared.saveAsync()
-        
-        
         
     }
     
@@ -137,7 +130,7 @@ class BookRepository: BookRepositoryProtocol{
     }
     
     func fetchFavoriteBooks() async throws -> [UserBookEntry] {
-        let request:NSFetchRequest<UserBookEntry> = UserBookEntry.fetchRequest()
+        let request: NSFetchRequest<UserBookEntry> = UserBookEntry.fetchRequest()
         request.predicate = NSPredicate(format: "isFavorite == true")
         
         return try context.fetch(request)
@@ -161,7 +154,7 @@ class BookRepository: BookRepositoryProtocol{
                 Calendar.current.isDate(readingDay.date, inSameDayAs: normalizedDate)
             }
             
-            if alreadyExists{
+            if alreadyExists {
                 return
             }
         }
@@ -185,7 +178,7 @@ class BookRepository: BookRepositoryProtocol{
         
         if let dayToRemove = readingDays.first(where: {  readingDay in
             Calendar.current.isDate(readingDay.date, inSameDayAs: normalizedDate)
-        }){
+        }) {
             userEntry.removeFromReadingDays(dayToRemove)
             context.delete(dayToRemove)
             try await CoreDataStack.shared.saveAsync()
@@ -195,14 +188,12 @@ class BookRepository: BookRepositoryProtocol{
     func toggleReadingDay(for userEntry: UserBookEntry, date: Date) async throws -> Bool {
         let normalizedDate = Calendar.current.startOfDay(for: date)
         
-     
-        
         if let existingReadingDays = userEntry.readingDays as? Set<ReadingDay> {
             let alreadyExists = existingReadingDays.contains { readingDay in
                 Calendar.current.isDate(readingDay.date, inSameDayAs: normalizedDate)
             }
             
-            if alreadyExists{
+            if alreadyExists {
                  try await unmarkDay(for: userEntry, date: date)
                 return false
             }
@@ -220,11 +211,11 @@ class BookRepository: BookRepositoryProtocol{
         }
         
         let calendar = Calendar.current
-        let monthDays =  readingDays.filter{ readingDay in
+        let monthDays =  readingDays.filter { readingDay in
             calendar.isDate(readingDay.date, equalTo: month, toGranularity: .month)
         }
         
-        return monthDays.sorted{ $0.date < $1.date}
+        return monthDays.sorted { $0.date < $1.date}
     }
     
     func didReadOnDay(userEntry: UserBookEntry, date: Date) async throws -> Bool {
@@ -238,6 +229,5 @@ class BookRepository: BookRepositoryProtocol{
             Calendar.current.isDate(readingDay.date, inSameDayAs: normalizedDate)
         }
     }
-    
     
 }

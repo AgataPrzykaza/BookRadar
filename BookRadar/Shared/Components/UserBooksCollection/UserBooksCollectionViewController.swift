@@ -26,7 +26,7 @@ class UserBooksCollectionViewController: UIViewController {
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
-        collectionView = UICollectionView(frame: view.bounds,collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -47,7 +47,6 @@ class UserBooksCollectionViewController: UIViewController {
     }
 }
 
-
 extension UserBooksCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,7 +60,6 @@ extension UserBooksCollectionViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
 
 extension UserBooksCollectionViewController: UICollectionViewDelegate {
     

@@ -30,11 +30,9 @@ class SwiftUIImageBookCell: UICollectionViewCell {
       
         hostingController?.view.removeFromSuperview()
         hostingController?.removeFromParent()
-        
       
         let swiftUIView = BookImageView(book: book)
         let hostingController = UIHostingController(rootView: swiftUIView)
-        
        
         hostingController.view.backgroundColor = .clear
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false

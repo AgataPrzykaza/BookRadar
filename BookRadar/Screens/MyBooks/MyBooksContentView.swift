@@ -12,7 +12,7 @@ struct MyBooksContentView: View {
     @Bindable var viewModel: MyBooksViewModel
     
     var body: some View {
-        VStack{
+        VStack {
             if viewModel.isLoading {
                 ProgressView("Wczytywanie książek...")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -23,7 +23,7 @@ struct MyBooksContentView: View {
                 
             } else {
 
-                UserBooksCollectionView(books: viewModel.books) { userBook in
+                UserBooksCollectionView(books: viewModel.books) { _ in
                     
                 }
             }
@@ -37,6 +37,6 @@ struct MyBooksContentView: View {
     }
 }
 
-//#Preview {
+// #Preview {
 //    MyBooksContentView()
-//}
+// }

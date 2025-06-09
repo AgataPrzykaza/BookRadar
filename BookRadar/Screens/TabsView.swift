@@ -17,7 +17,7 @@ struct TabsView: View {
                Image(systemName: "book.fill")
            }
            
-           Tab{
+           Tab {
                BookSearchView()
            } label: {
                Image(systemName: "magnifyingglass")

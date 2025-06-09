@@ -32,23 +32,20 @@ import BookAPiKit
         return true
     }
     
-    func search(query: String,type: BookSearchType = .all) async{
-        
+    func search(query: String, type: BookSearchType = .all) async {
         
         errorMessage = nil
         isLoading = true
         
-        do{
+        do {
             let searchResults = try await bookAPIService.searchBooks(
                 query: query,
                 type: type,
                 maxResult: 20
             )
             books = searchResults
-        }
-        catch{
+        } catch {
             handleError(error)
-            
             
         }
         

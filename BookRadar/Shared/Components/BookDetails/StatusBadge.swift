@@ -45,5 +45,4 @@ struct StatusBadge: View {
         .cornerRadius(8)
     }
 }
-
  
