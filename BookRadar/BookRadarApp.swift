@@ -19,6 +19,8 @@ struct BookRadarApp: App {
     let bookRepository = BookRepository()
     init() {
         print(NSPersistentContainer.defaultDirectoryURL())
+        
+
     }
     
     var body: some Scene {

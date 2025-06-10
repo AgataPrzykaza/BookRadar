@@ -21,7 +21,7 @@ struct BookDetailsSheet: View {
                 if let viewModel = viewModel {
                     BookDetailsSheetContentView(book: book, viewModel: viewModel)
                 } else {
-                    ProgressView("Wczytywanie książek...")
+                    ProgressView("Wczytywanie książki...")
                 }
             }
         }

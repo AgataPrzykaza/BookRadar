@@ -15,12 +15,12 @@ extension BookItem {
         return NSFetchRequest<BookItem>(entityName: "BookItem")
     }
 
-    @NSManaged public var authors: String?
+    @NSManaged public var authors: String
     @NSManaged public var bookDescription: String?
-    @NSManaged public var id: String?
+    @NSManaged public var id: String
     @NSManaged public var publishedDate: String?
     @NSManaged public var thumbnailURL: String?
-    @NSManaged public var title: String?
+    @NSManaged public var title: String
     @NSManaged public var userEntries: NSSet?
 
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MyBooksContentView: View {
     
     @Bindable var viewModel: MyBooksViewModel
+    @State private var selectedBook: UserBookEntry?
     
     var body: some View {
         VStack {
@@ -23,9 +24,11 @@ struct MyBooksContentView: View {
                 
             } else {
 
-                UserBooksCollectionView(books: viewModel.books) { _ in
-                    
+                UserBooksCollectionView(books: viewModel.books) { book in
+                  selectedBook = book
                 }
+               
+               
             }
             
             if let errorMessage = viewModel.errorMessage {
@@ -34,6 +37,11 @@ struct MyBooksContentView: View {
                             .padding()
                     }
         }
+        .navigationDestination(item: $selectedBook) { book in
+            BookEntryDeatilsView(bookEntry: book)
+               
+        }
+       
     }
 }
 

@@ -1,6 +1,6 @@
 
 # .swiftlint.yml - Minimalna konfiguracja
-# Jeśli masz problemy z SourceKit
+
 
 excluded:
   - Carthage

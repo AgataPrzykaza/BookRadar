@@ -15,6 +15,13 @@ struct MyBooksView: View {
     var body: some View {
         
         NavigationStack {
+            
+            Text("Moje książki")
+                .font(.title)
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity,alignment: .leading)
+                .padding()
+            
             Group {
                 if let viewModel = viewModel {
                     MyBooksContentView(viewModel: viewModel)
@@ -22,7 +29,9 @@ struct MyBooksView: View {
                     ProgressView("Wczytywanie książek...")
                 }
             }
+            
         }
+      
         .task {
             if viewModel == nil {
                 viewModel = MyBooksViewModel(bookRepository: repository)
@@ -33,5 +42,5 @@ struct MyBooksView: View {
 
 #Preview {
     MyBooksView()
-     
+    
 }
