@@ -28,7 +28,6 @@ struct MyBooksContentView: View {
                   selectedBook = book
                 }
                
-               
             }
             
             if let errorMessage = viewModel.errorMessage {

@@ -22,6 +22,8 @@ protocol BookRepositoryProtocol {
     
     func fetchMyBooks() async throws -> [UserBookEntry]
     func fetchBooks(with status: ReadingStatus) async throws -> [UserBookEntry]
+    func fetchBooks(with status: ReadingStatus, limit: Int? ) async throws -> [UserBookEntry]
+    func getBooksCount(for status: ReadingStatus) async throws -> Int
     func fetchFavoriteBooks() async throws -> [UserBookEntry]
     func isBookInLibrary(_ id: String) async throws -> UserBookEntry?
     

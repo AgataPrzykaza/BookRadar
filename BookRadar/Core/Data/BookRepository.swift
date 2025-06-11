@@ -129,6 +129,22 @@ class BookRepository: BookRepositoryProtocol {
         return try context.fetch(request)
     }
     
+    func fetchBooks(with status: ReadingStatus, limit: Int? = nil) async throws -> [UserBookEntry] {
+        
+        let allBooks = try await fetchBooks(with: status)
+                
+                if let limit = limit {
+                    return Array(allBooks.prefix(limit))
+                }
+                return allBooks
+        
+    }
+    
+    func getBooksCount(for status: ReadingStatus) async throws -> Int {
+           let books = try await fetchBooks(with: status)
+           return books.count
+       }
+    
     func fetchFavoriteBooks() async throws -> [UserBookEntry] {
         let request: NSFetchRequest<UserBookEntry> = UserBookEntry.fetchRequest()
         request.predicate = NSPredicate(format: "isFavorite == true")

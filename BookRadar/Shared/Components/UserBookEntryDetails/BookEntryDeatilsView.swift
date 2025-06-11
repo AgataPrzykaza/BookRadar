@@ -54,13 +54,11 @@ struct BookEntryDeatilsView: View {
     @State private var viewModel: BookEntryDetailsViewModel?
     var bookEntry: UserBookEntry
     
-   
-    
     var body: some View {
-        Group{
+        Group {
             if let viewModel = viewModel {
                 BookEntryDetailsContentView(userBookEntry: bookEntry, viewModel: viewModel)
-            } else{
+            } else {
                 ProgressView("Wczytywanie książki...")
             }
         }
@@ -79,7 +77,7 @@ struct BookEntryDetailsContentView: View {
     @Bindable var viewModel: BookEntryDetailsViewModel
     
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack(spacing: 20) {
                 
                 if let book = userBookEntry.book {
@@ -118,7 +116,6 @@ struct BookEntryDetailsContentView: View {
     }
 }
 
-
-//#Preview {
+// #Preview {
 //    BookEntryDeatilsView()
-//}
+// }

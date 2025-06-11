@@ -19,7 +19,7 @@ struct MyBooksView: View {
             Text("Moje książki")
                 .font(.title)
                 .fontWeight(.bold)
-                .frame(maxWidth: .infinity,alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
             
             Group {

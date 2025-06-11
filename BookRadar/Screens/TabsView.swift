@@ -22,6 +22,13 @@ struct TabsView: View {
            } label: {
                Image(systemName: "magnifyingglass")
            }
+           
+           Tab {
+               ListsView()
+           } label: {
+               Image(systemName: "house")
+           }
+
 
         }
     }
