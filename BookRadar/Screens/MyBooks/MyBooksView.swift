@@ -31,13 +31,14 @@ struct MyBooksView: View {
             }
             
         }
-      
+        
         .task {
             if viewModel == nil {
                 viewModel = MyBooksViewModel(bookRepository: repository)
                 await viewModel?.loadBooks()
             }
-        }    }
+        }
+    }
 }
 
 #Preview {

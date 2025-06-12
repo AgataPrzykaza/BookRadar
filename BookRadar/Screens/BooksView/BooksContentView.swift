@@ -1,15 +1,14 @@
 //
-//  MyBookContentView.swift
+//  BooksContentView.swift
 //  BookRadar
 //
-//  Created by Agata Przykaza on 06/06/2025.
+//  Created by Agata Przykaza on 12/06/2025.
 //
-
 import SwiftUI
 
-struct MyBooksContentView: View {
+struct BooksContentView: View {
+    @Bindable var viewModel: BooksViewModel
     
-    @Bindable var viewModel: MyBooksViewModel
     @State private var selectedBook: UserBookEntry?
     
     var body: some View {
@@ -19,31 +18,31 @@ struct MyBooksContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
             } else if viewModel.books.isEmpty {
-                
                 Text("Brak książek")
                 
             } else {
-
                 UserBooksCollectionView(books: viewModel.books) { book in
-                  selectedBook = book
+                    selectedBook = book
                 }
-               
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
             }
             
             if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .padding()
-                    }
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .padding()
+            }
         }
         .navigationDestination(item: $selectedBook) { book in
             BookEntryDetailsView(bookEntry: book)
-               
+                .onDisappear{
+                    Task {
+                        await viewModel.refreshBooks()
+                    }
+                   
+                }
         }
-       
     }
 }
 
-// #Preview {
-//    MyBooksContentView()
-// }

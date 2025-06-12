@@ -15,25 +15,28 @@ struct StatusRowView: View{
     
     
     var body: some View{
-        HStack(spacing: 10) {
-            
-            
-           CategoryImageView(books: books)
-            
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(status.displayName)
-                    .fontWeight(.medium)
-                Text(bookCountText(for: count))
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+        NavigationLink(value: status) {
+            HStack(spacing: 10) {
+                
+                
+               CategoryImageView(books: books)
+                
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(status.displayName)
+                        .fontWeight(.medium)
+                    Text(bookCountText(for: count))
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .frame(width: 200,alignment: .leading)
+                
+             
+                
             }
-            .frame(width: 200,alignment: .leading)
-            
-         
+           
             
         }
+        }
        
-        
-    }
 }

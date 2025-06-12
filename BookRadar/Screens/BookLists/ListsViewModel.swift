@@ -58,6 +58,11 @@ final class ListsViewModel {
         
     }
     
+    func refresh() async {
+        await loadPreviews()
+        await getBooksCount()
+    }
+    
 }
 
 

@@ -24,12 +24,21 @@ struct ListsContentView: View {
                 List{
                     ForEach(ReadingStatus.allCases, id: \.self) { status in
                         
+                        
                         StatusRowView(status: status, count: viewModel.getBooksCount(for: status), books: viewModel.getBooks(for: status))
                         
                         
                     }
                 }
                 .listStyle(.plain)
+                .navigationDestination(for: ReadingStatus.self) { status in
+                    BooksView(status: status, title: status.displayName)
+                        .onDisappear{
+                            Task{
+                                await viewModel.refresh()
+                            }
+                        }
+                }
             }
         }
     }

@@ -12,7 +12,9 @@ struct TabsView: View {
     var body: some View {
        TabView {
            Tab {
-               MyBooksView()
+               NavigationStack{
+                   BooksView()
+               }
            } label: {
                Image(systemName: "book.fill")
            }
